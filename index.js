@@ -161,6 +161,11 @@ window.onload = function() {
     editor = document.getElementById('editor');
     file = document.getElementById('file');
 
+    document.getElementById('maxDailyLuck').onclick = function(e) {
+        e.preventDefault();
+        document.getElementById('SaveGame.dailyLuck').value = '0.1';
+    }
+
     var seasonInputs = document.getElementsByClassName('js-season');
     for (var i = 0; i < seasonInputs.length; i++) {
         seasonInputs[i].addEventListener('change', function(e) {
