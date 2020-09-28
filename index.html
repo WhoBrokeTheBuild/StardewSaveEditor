@@ -1,0 +1,112 @@
+<html>
+<head>
+    <title>Stardew Valley Save Editor</title>
+    <script src="index.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+    <div class="uploadBox">
+        <form id="upload">
+            <h1>Upload Save File</h1>
+            <input type="file" id="file" />
+            <input type="submit" value="Upload" />
+        </form>
+    </div>
+    <div class="editorBox">
+        <form id="editor">
+            <h1>Edit Save File</h1>
+            <h2>Player</h2>
+            <label class="editorLabel" for="SaveGame.player.name">Name: </label>
+            <input class="js-textInputs" type="text" name="SaveGame.player.name" id="SaveGame.player.name" disabled="disabled" />
+            <br />
+            <label class="editorLabel" for="SaveGame.player.favoriteThing">Favorite Thing: </label>
+            <input class="js-textInputs" type="text" name="SaveGame.player.favoriteThing" id="SaveGame.player.favoriteThing" />
+            <br />
+            <label class="editorLabel" for="SaveGame.player.money">Money: </label>
+            <input class="js-textInputs" type="number" name="SaveGame.player.money" id="SaveGame.player.money" />
+            <br />
+            <label class="editorLabel" for="SaveGame.player.shirt">Shirt: </label>
+            <input class="js-textInputs" type="number" name="SaveGame.player.shirt" id="SaveGame.player.shirt" />
+            <br />
+            <fieldset>
+                <legend>Cave Choice</legend>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.player.caveChoice" id="SaveGame.player.caveChoice:0" value="0" />
+                    <label for="SaveGame.player.caveChoice:0">None</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.player.caveChoice" id="SaveGame.player.caveChoice:1" value="1" />
+                    <label for="SaveGame.player.caveChoice:1">Fruit Bats</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.player.caveChoice" id="SaveGame.player.caveChoice:2" value="2" />
+                    <label for="SaveGame.player.caveChoice:2">Mushrooms</label>
+                </span>
+            </fieldset>
+            <h2>Farm</h2>
+            <fieldset>
+                <legend>Farm Type</legend>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.whichFarm" id="SaveGame.whichFarm:0" value="0" />
+                    <label for="SaveGame.whichFarm:0">Standard</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.whichFarm" id="SaveGame.whichFarm:1" value="1" />
+                    <label for="SaveGame.whichFarm:1">Riverland</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.whichFarm" id="SaveGame.whichFarm:2" value="2" />
+                    <label for="SaveGame.whichFarm:2">Forest</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.whichFarm" id="SaveGame.whichFarm:3" value="3" />
+                    <label for="SaveGame.whichFarm:3">Hill-top</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.whichFarm" id="SaveGame.whichFarm:4" value="4" />
+                    <label for="SaveGame.whichFarm:4">Wilderness</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.whichFarm" id="SaveGame.whichFarm:5" value="5" />
+                    <label for="SaveGame.whichFarm:5">Four Corners</label>
+                </span>
+            </fieldset>
+            <br />
+            <label class="editorLabel" for="SaveGame.player.farmName">Farm Name: </label>
+            <input class="js-textInputs" type="text" name="SaveGame.player.farmName" id="SaveGame.player.farmName" />
+            <br />
+            <label class="editorLabel" for="SaveGame.player.horseName">Horse Name: </label>
+            <input class="js-textInputs" type="text" name="SaveGame.player.horseName" id="SaveGame.player.horseName" />
+            <br />
+            <label class="editorLabel" for="SaveGame.year">Year: </label>
+            <input class="js-textInputs" type="number" name="SaveGame.year" id="SaveGame.year" />
+            <br />
+            <label class="editorLabel" for="SaveGame.dayOfMonth">Day: </label>
+            <input class="js-textInputs" type="number" min="1" max="28" name="SaveGame.dayOfMonth" id="SaveGame.dayOfMonth" />
+            <br />
+            <fieldset>
+                <legend>Season</legend>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.currentSeason" id="SaveGame.currentSeason:spring" value="spring" />
+                    <label for="SaveGame.currentSeason:spring">Spring</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.currentSeason" id="SaveGame.currentSeason:summer" value="summer" />
+                    <label for="SaveGame.currentSeason:summer">Summer</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.currentSeason" id="SaveGame.currentSeason:fall" value="fall" />
+                    <label for="SaveGame.currentSeason:fall">Fall</label>
+                </span>
+                <span class="nowrap">
+                    <input class="js-radioInputs" type="radio" name="SaveGame.currentSeason" id="SaveGame.currentSeason:winter" value="winter" />
+                    <label for="SaveGame.currentSeason:winter">Winter</label>
+                </span>
+            </fieldset>
+            <br />
+            <br />
+            <input type="submit" value="Download" />
+        </form>
+    </div>
+</body>
+</html>

@@ -1,0 +1,16 @@
+.nowrap {
+    white-space: nowrap;
+}
+
+.uploadBox,
+.editorBox {
+    border: 1px solid;
+    padding: 10px;
+    margin: 10px;
+}
+
+.editorLabel {
+    display: inline-block;
+    margin-bottom: 10px;
+    width: 120px;
+}
