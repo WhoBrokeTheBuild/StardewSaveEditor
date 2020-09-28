@@ -14,3 +14,9 @@
     margin-bottom: 10px;
     width: 120px;
 }
+
+.statLabel {
+    display: inline-block;
+    margin-bottom: 4px;
+    width: 200px;
+}

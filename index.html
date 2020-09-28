@@ -13,6 +13,8 @@
         </form>
     </div>
     <div class="editorBox">
+        <label class="editorLabel" for="SaveGame.gameVersion">Version: </label>
+        <span class="js-textOutputs" id="SaveGame.gameVersion"></span>
         <form id="editor">
             <h1>Edit Save File</h1>
             <h2>Global</h2>
@@ -51,7 +53,7 @@
             <br />
             <h2>Player</h2>
             <label class="editorLabel" for="SaveGame.player.name">Name: </label>
-            <input class="js-textInputs" type="text" name="SaveGame.player.name" id="SaveGame.player.name" disabled="disabled" />
+            <span class="js-textOutputs" id="SaveGame.player.name"></span>
             <br />
             <label class="editorLabel" for="SaveGame.player.favoriteThing">Favorite Thing: </label>
             <input class="js-textInputs" type="text" name="SaveGame.player.favoriteThing" id="SaveGame.player.favoriteThing" />
@@ -291,6 +293,8 @@
             <br />
             <input type="submit" value="Download" />
         </form>
+        <h2>Stats</h2>
+        <div id="stats"></div>
     </div>
 </body>
 </html>

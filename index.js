@@ -6,6 +6,24 @@ var file = null;
 var xml = null;
 var filename = null;
 
+function varNameToLabel(str) {
+    if (str.length == 0) {
+        return "";
+    }
+
+    str = str.charAt(0).toUpperCase() + str.slice(1);
+    var length = str.length;
+    for (var i = 1; i < length; i++) {
+        if (str.charAt(i) == str.charAt(i).toUpperCase()) {
+            str = str.slice(0, i) + ' ' + str.slice(i);
+            length += 1;
+            i += 1;
+        }
+    }
+
+    return str;
+}
+
 function checkFileAPI() {
     if (window.File && window.FileReader && window.FileList && window.Blob) {
         return true;
@@ -19,6 +37,18 @@ function loadEditor() {
     console.log(xml);
 
     var changedEvent = new Event('change');
+
+    var textOutputs = document.getElementsByClassName('js-textOutputs');
+    for (var i = 0; i < textOutputs.length; i++) {
+        var path = textOutputs[i].id.replaceAll('.', ' ');
+        var data = xml.querySelector(path);
+        if (data) {
+            textOutputs[i].innerText = data.textContent;
+        }
+        else {
+            textOutputs[i].innerText = '';
+        }
+    }
 
     var textInputs = document.getElementsByClassName('js-textInputs');
     for (var i = 0; i < textInputs.length; i++) {
@@ -78,6 +108,20 @@ function loadEditor() {
         intArrayInputs[i].checked = (intArrayValues[name].includes(intArrayInputs[i].value));
     }
 
+    var stats = document.getElementById('stats');
+    stats.innerHTML = '';
+    
+    var statsData = xml.querySelectorAll('SaveGame player stats > *');
+    for (var i = 0; i < statsData.length; i++) {
+        if (statsData[i].tagName == 'specificMonstersKilled') {
+            return;
+        }
+        var value = statsData[i].textContent;
+        if (statsData[i].tagName == 'averageBedtime') {
+            value = value.slice(0, 2) + ':' + value.slice(2);
+        }
+        stats.innerHTML += '<span class="statLabel">' + varNameToLabel(statsData[i].tagName) + ': </span>' + value + '<br />';
+    }
 }
 
 function saveEditor() {
