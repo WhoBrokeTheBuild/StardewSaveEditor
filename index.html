@@ -17,10 +17,10 @@
             <h1>Edit Save File</h1>
             <h2>Global</h2>
             <label class="editorLabel" for="SaveGame.dailyLuck">Daily Luck: </label>
-            <input class="js-textInputs" type="number" min="-0.1" max="0.1" step="0.01" name="SaveGame.dailyLuck" id="SaveGame.dailyLuck" />
+            <input class="js-textInputs" type="number" min="-0.1" max="0.1" name="SaveGame.dailyLuck" id="SaveGame.dailyLuck" />
             <br />
-            <label class="editorLabel" for="SaveGame.chanceToRainTomorrow">Chance to Rain Tomorrow: </label>
-            <input class="js-textInputs" type="number" min="0" max="1" step="0.01" name="SaveGame.chanceToRainTomorrow" id="SaveGame.chanceToRainTomorrow" />
+            <label class="editorLabel" for="SaveGame.player.isRaining">Rain Tomorrow: </label>
+            <input class="js-checkInputs" type="checkbox" name="SaveGame.player.isRaining" id="SaveGame.player.isRaining" />
             <br />
             <label class="editorLabel" for="SaveGame.year">Year: </label>
             <input class="js-textInputs" type="number" name="SaveGame.year" id="SaveGame.year" />
@@ -55,8 +55,11 @@
             <label class="editorLabel" for="SaveGame.player.favoriteThing">Favorite Thing: </label>
             <input class="js-textInputs" type="text" name="SaveGame.player.favoriteThing" id="SaveGame.player.favoriteThing" />
             <br />
+            <label class="editorLabel" for="SaveGame.player.isMale">Male: </label>
+            <input class="js-checkInputs" type="checkbox" name="SaveGame.player.isMale" id="SaveGame.player.isMale" />
+            <br />
             <label class="editorLabel" for="SaveGame.player.money">Money: </label>
-            <input class="js-textInputs" type="number" name="SaveGame.player.money" id="SaveGame.player.money" />
+            <input class="js-textInputs" type="number" min="0" max="99999999" name="SaveGame.player.money" id="SaveGame.player.money" />
             <br />
             <label class="editorLabel" for="SaveGame.player.clubCoins">Club Coins: </label>
             <input class="js-textInputs" type="number" name="SaveGame.player.clubCoins" id="SaveGame.player.clubCoins" />

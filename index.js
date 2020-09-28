@@ -33,6 +33,19 @@ function loadEditor() {
         }
     }
 
+    var checkInputs = document.getElementsByClassName('js-checkInputs');
+    for (var i = 0; i < checkInputs.length; i++) {
+        var path = checkInputs[i].name.replaceAll('.', ' ');
+        var data = xml.querySelector(path);
+        if (data) {
+            checkInputs[i].checked = (data.textContent == "true");
+            checkInputs[i].dispatchEvent(changedEvent);
+        }
+        else {
+            checkInputs[i].checked = false;
+        }
+    }
+
     var radioInputs = document.getElementsByClassName('js-radioInputs');
     for (var i = 0; i < radioInputs.length; i++) {
         var path = radioInputs[i].name.replaceAll('.', ' ');
@@ -75,6 +88,15 @@ function saveEditor() {
             var data = xml.querySelector(path);
             if (data) {
                 data.textContent = textInputs[i].value;
+            }
+        }
+
+        var checkInputs = document.getElementsByClassName('js-checkInputs');
+        for (var i = 0; i < checkInputs.length; i++) {
+            var path = checkInputs[i].name.replaceAll('.', ' ');
+            var data = xml.querySelector(path);
+            if (data && checkInputs[i].checked) {
+                data.textContent = (checkInputs[i].checked ? "true" : "false");
             }
         }
 
