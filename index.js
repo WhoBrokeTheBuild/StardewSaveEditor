@@ -25,12 +25,15 @@ function checkFileAPI() {
 function loadEditor() {
     console.log(xml);
 
+    var changedEvent = new Event('change');
+
     var textInputs = document.getElementsByClassName('js-textInputs');
     for (var i = 0; i < textInputs.length; i++) {
         var path = textInputs[i].name.replaceAll('.', ' ');
         var data = xml.querySelector(path);
         if (data) {
             textInputs[i].value = data.textContent;
+            textInputs[i].dispatchEvent(changedEvent);
         }
         else {
             textInputs[i].value = '';
@@ -43,6 +46,7 @@ function loadEditor() {
         var data = xml.querySelector(path);
         if (data) {
             radioInputs[i].checked = (radioInputs[i].value == data.textContent);
+            radioInputs[i].dispatchEvent(changedEvent);
         }
         else {
             radioInputs[i].checked = false;
@@ -53,32 +57,34 @@ function loadEditor() {
 }
 
 function saveEditor() {
-    var textInputs = document.getElementsByClassName('js-textInputs');
-    for (var i = 0; i < textInputs.length; ++i) {
-        var path = textInputs[i].name.replaceAll('.', ' ');
-        var data = xml.querySelector(path);
-        if (data) {
-            data.textContent = textInputs[i].value;
+    if (filename) {
+        var textInputs = document.getElementsByClassName('js-textInputs');
+        for (var i = 0; i < textInputs.length; ++i) {
+            var path = textInputs[i].name.replaceAll('.', ' ');
+            var data = xml.querySelector(path);
+            if (data) {
+                data.textContent = textInputs[i].value;
+            }
         }
-    }
 
-    var radioInputs = document.getElementsByClassName('js-radioInputs');
-    for (var i = 0; i < radioInputs.length; i++) {
-        var path = radioInputs[i].name.replaceAll('.', ' ');
-        var data = xml.querySelector(path);
-        if (data && radioInputs[i].checked) {
-            data.textContent = radioInputs[i].value;
+        var radioInputs = document.getElementsByClassName('js-radioInputs');
+        for (var i = 0; i < radioInputs.length; i++) {
+            var path = radioInputs[i].name.replaceAll('.', ' ');
+            var data = xml.querySelector(path);
+            if (data && radioInputs[i].checked) {
+                data.textContent = radioInputs[i].value;
+            }
         }
+
+        var xmlSerializer = new XMLSerializer();
+    
+        var tmp = document.createElement('a');
+        var text = xmlSerializer.serializeToString(xml);
+        tmp.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+        tmp.setAttribute('download', filename);
+        tmp.click();
+        document.body.removeChild(tmp);
     }
-
-    var xmlSerializer = new XMLSerializer();
-
-    var tmp = document.createElement('a');
-    var text = xmlSerializer.serializeToString(xml);
-    tmp.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
-    tmp.setAttribute('download', filename);
-    tmp.click();
-    document.body.removeChild(tmp);
 }
 
 window.onload = function() {
@@ -89,6 +95,16 @@ window.onload = function() {
     upload = document.getElementById('upload');
     editor = document.getElementById('editor');
     file = document.getElementById('file');
+
+    var seasonInputs = document.getElementsByClassName('js-season');
+    for (var i = 0; i < seasonInputs.length; i++) {
+        seasonInputs[i].addEventListener('change', function(e) {
+            if (e.target.checked) {
+                document.body.classList.remove("season-spring", "season-summer", "season-fall", "season-winter");
+                document.body.classList.add("season-" + e.target.value);
+            }
+        })
+    }
 
     upload.onsubmit = function(e) {
         e.preventDefault();
