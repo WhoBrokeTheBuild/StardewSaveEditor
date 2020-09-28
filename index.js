@@ -6,13 +6,6 @@ var file = null;
 var xml = null;
 var filename = null;
 
-const wikiURL = "https://stardewvalleywiki.com";
-const shirtURL = wikiURL + "/mediawiki/images/d/db/Shirt"
-
-function getShirtURL(id) {
-    return wikiURL + "/mediawiki/images/d/db/Shirt" + id.padStart(3, '0') + ".png";
-}
-
 function checkFileAPI() {
     if (window.File && window.FileReader && window.FileList && window.Blob) {
         return true;

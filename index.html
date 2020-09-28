@@ -48,14 +48,17 @@
                 <legend>Professions</legend>
                 <fieldset>
                     <legend>Farming</legend>
-                        <span class="nowrap">
-                            <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:0" value="0" />
-                            <label for="SaveGame.player.professions:0">Rancher</label>
-                        </span>
-                        <span class="nowrap">
-                            <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:1" value="1" />
-                            <label for="SaveGame.player.professions:1">Tiller</label>
-                        </span>
+                    <label for="SaveGame.player.farmingLevel">Level: </label>
+                    <input class="js-textInputs" type="number" min="0" max="10" name="SaveGame.player.farmingLevel" id="SaveGame.player.farmingLevel" />
+                    <br />
+                    <span class="nowrap">
+                        <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:0" value="0" />
+                        <label for="SaveGame.player.professions:0">Rancher</label>
+                    </span>
+                    <span class="nowrap">
+                        <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:1" value="1" />
+                        <label for="SaveGame.player.professions:1">Tiller</label>
+                    </span>
                     <span class="nowrap">
                         <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:2" value="2" />
                         <label for="SaveGame.player.professions:2">Coopmaster</label>
@@ -75,6 +78,9 @@
                 </fieldset>
                 <fieldset>
                     <legend>Fishing</legend>
+                    <label for="SaveGame.player.fishingLevel">Level: </label>
+                    <input class="js-textInputs" type="number" min="0" max="10" name="SaveGame.player.fishingLevel" id="SaveGame.player.fishingLevel" />
+                    <br />
                     <span class="nowrap">
                         <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:6" value="6" />
                         <label for="SaveGame.player.professions:6">Fisher</label>
@@ -102,6 +108,9 @@
                 </fieldset>
                 <fieldset>
                     <legend>Foraging</legend>
+                    <label for="SaveGame.player.foragingLevel">Level: </label>
+                    <input class="js-textInputs" type="number" min="0" max="10" name="SaveGame.player.foragingLevel" id="SaveGame.player.foragingLevel" />
+                    <br />
                     <span class="nowrap">
                         <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:12" value="12" />
                         <label for="SaveGame.player.professions:12">Forester</label>
@@ -129,6 +138,9 @@
                 </fieldset>
                 <fieldset>
                     <legend>Mining</legend>
+                    <label for="SaveGame.player.miningLevel">Level: </label>
+                    <input class="js-textInputs" type="number" min="0" max="10" name="SaveGame.player.miningLevel" id="SaveGame.player.miningLevel" />
+                    <br />
                     <span class="nowrap">
                         <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:18" value="18" />
                         <label for="SaveGame.player.professions:18">Miner</label>
@@ -156,6 +168,9 @@
                 </fieldset>
                 <fieldset>
                     <legend>Combat</legend>
+                    <label for="SaveGame.player.combatLevel">Level: </label>
+                    <input class="js-textInputs" type="number" min="0" max="10" name="SaveGame.player.combatLevel" id="SaveGame.player.combatLevel" />
+                    <br />
                     <span class="nowrap">
                         <input class="js-intArrayInputs" type="checkbox" name="SaveGame.player.professions" id="SaveGame.player.professions:24" value="24" />
                         <label for="SaveGame.player.professions:24">Fighter</label>
