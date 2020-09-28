@@ -53,6 +53,24 @@ function loadEditor() {
         }
     }
 
+    var intArrayInputs = document.getElementsByClassName('js-intArrayInputs');
+    var intArrayValues = { };
+    for (var i = 0; i < intArrayInputs.length; i++) {
+        var name = intArrayInputs[i].name;
+        if (!(name in intArrayValues)) {
+            var path = name.replaceAll('.', ' ');
+            var data = xml.querySelectorAll(path + " int");
+            if (data) {
+                var tmp = [];
+                for (var j = 0; j < data.length; j++) {
+                    tmp.push(data[j].textContent);
+                }
+                intArrayValues[name] = tmp;
+            }
+        }
+
+        intArrayInputs[i].checked = (intArrayValues[name].includes(intArrayInputs[i].value));
+    }
 
 }
 
@@ -76,12 +94,44 @@ function saveEditor() {
             }
         }
 
+        var intArrayInputs = document.getElementsByClassName('js-intArrayInputs');
+        var intArrayValues = { };
+        for (var i = 0; i < intArrayInputs.length; i++) {
+            var name = intArrayInputs[i].name;
+            if (!(name in intArrayValues)) {
+                intArrayValues[name] = [];
+            }
+
+            if (intArrayInputs[i].checked) {
+                intArrayValues[name].push(intArrayInputs[i].value);
+            }
+        }
+
+        for (var name in intArrayValues) {
+            if (intArrayValues.hasOwnProperty(name)) {
+                var path = name.replaceAll('.', ' ');
+                var data = xml.querySelector(path);
+                if (data) {
+                    while (data.firstChild) {
+                        data.removeChild(data.firstChild);
+                    }
+    
+                    for (var i = 0; i < intArrayValues[name].length; i++) {
+                        var tmp = xml.createElement('int');
+                        tmp.textContent = intArrayValues[name][i];
+                        data.appendChild(tmp);
+                    }
+                }
+            }
+        }
+
         var xmlSerializer = new XMLSerializer();
     
         var tmp = document.createElement('a');
         var text = xmlSerializer.serializeToString(xml);
         tmp.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
         tmp.setAttribute('download', filename);
+        document.body.appendChild(tmp);
         tmp.click();
         document.body.removeChild(tmp);
     }
